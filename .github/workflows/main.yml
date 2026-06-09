@@ -56,6 +56,7 @@ jobs:
 
       - name: Decompress WebGL build for GitHub Pages
         run: |
+          sudo chown -R $USER:$USER builds/
           sudo apt-get install -y brotli
           BUILD_DIR=builds/WebGL/WebGL/Build
           for f in "$BUILD_DIR"/*.br; do
