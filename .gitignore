@@ -49,6 +49,9 @@
 *.nupkg
 **/[Pp]ackages/*
 !**/[Pp]ackages/build/
+# Unity package manager (must not be ignored)
+!Packages/manifest.json
+!Packages/packages-lock.json
 
 # .NET build artifacts
 artifacts/
@@ -154,6 +157,8 @@ x86/
 *.nupkg
 **/[Pp]ackages/*
 !**/[Pp]ackages/build/
+!Packages/manifest.json
+!Packages/packages-lock.json
 *.nuget.props
 *.nuget.targets
 
