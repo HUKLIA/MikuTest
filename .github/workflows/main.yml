@@ -54,6 +54,21 @@ jobs:
           targetPlatform: WebGL
           buildsPath: builds
 
+      - name: Decompress WebGL build for GitHub Pages
+        run: |
+          sudo apt-get install -y brotli
+          BUILD_DIR=builds/WebGL/WebGL/Build
+          for f in "$BUILD_DIR"/*.br; do
+            brotli -d "$f" -o "${f%.br}"
+            rm "$f"
+          done
+          sed -i \
+            's/\.data\.br"/.data"/g;
+             s/\.framework\.js\.br"/.framework.js"/g;
+             s/\.wasm\.br"/.wasm"/g' \
+            builds/WebGL/WebGL/index.html
+          touch builds/WebGL/WebGL/.nojekyll
+
       - name: Debug output structure
         run: find builds/ -type f | sort
 
